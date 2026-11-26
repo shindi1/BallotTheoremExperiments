@@ -43,7 +43,7 @@ def write_results(rows, path):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["a", "b", "theoretical", "experimental", "difference", "relative_diff", "trials"])
+        writer.writerow(["a", "b", "theoretical", "experimental", "difference", "relative_diff" "trials"])
         writer.writerows(rows)
 
 

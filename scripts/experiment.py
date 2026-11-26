@@ -58,13 +58,14 @@ def main():
 
     rows = []
     for a, b in load_parameters(args.parameters):
-        theoretical = round(theoretical_probability(a, b), 4)
-        experimental = round(experimental_probability(a, b, args.trials), 4)
-        difference = round(experimental - theoretical, 4)
-        rows.append((a, b, theoretical, experimental, difference, args.trials))
+        theoretical = round(theoretical_probability(a, b), 5)
+        experimental = round(experimental_probability(a, b, args.trials), 5)
+        difference = round(experimental - theoretical, 5)
+        relative_difference = round(difference / theoretical, 5) if theoretical != 0 else None
+        rows.append((a, b, theoretical, experimental, difference, relative_difference, args.trials))
         print(
-            f"a={a:>6} b={b:>6}  theoretical={theoretical:.4f}  "
-            f"experimental={experimental:.4f}  difference={difference:.4f}"
+            f"a={a:>6} b={b:>6}  theoretical={theoretical:.5f}  "
+            f"experimental={experimental:.5f}  difference={difference:.5f}  relative_dif={relative_difference:.5f}"
         )
 
     write_results(rows, output)
